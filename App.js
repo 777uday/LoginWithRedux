@@ -11,7 +11,8 @@ import {Platform, StyleSheet, Text, View} from 'react-native';
 import { Provider, connect } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from "./src/reducers";
-import Button from './src/components/Button'
+import CustomButton from './src/components/CustomButton';
+import CustomText from './src/components/customText';
 
 const store = createStore(reducers);
 
@@ -21,10 +22,12 @@ export default class App extends Component {
     return (
       <Provider store={ store }>
         <View style={styles.container}>
-          <Text style={styles.welcome}>Count : {store.getState().count} - {storeState.count}</Text>
-          <Button title="Increment" alertmsg="Increment"/>
+          <CustomText />
+          <CustomButton title="Increment" type="increment" countValue={storeState}/>
           <Text style={styles.welcome}> </Text>
-          <Button title="Decrement" alertmsg='Decrement'/>
+          <CustomButton title="Decrement" type='decrement' countValue={storeState}/>
+          <Text style={styles.welcome}> </Text>
+          <CustomButton title="Reset" type='reset' countValue={storeState}/>
         </View>
       </Provider>
     );

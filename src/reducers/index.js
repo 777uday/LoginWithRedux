@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
+import loginReducer from './loginReducer';
 import countReducer from './countReducer';
 
 export default combineReducers({
-    count:countReducer
+    loginReducer : loginReducer,
+    count : countReducer
 });

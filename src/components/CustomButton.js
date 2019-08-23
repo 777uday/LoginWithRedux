@@ -20,6 +20,9 @@ class CustomButton extends Component {
       this.props.decrementCount(this.props.countValue.count);
     } else if(type == 'reset'){
       this.props.resetCount(0);
+    } else if(type == 'login'){
+      console.log("CustomButton:login:props:"+JSON.stringify(this.props));
+      this.props.loginUsername(this.props.data.loginReducer.username);
     }
   }
 

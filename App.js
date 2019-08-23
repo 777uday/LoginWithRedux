@@ -7,12 +7,27 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, View} from 'react-native';
 import { Provider, connect } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from "./src/reducers";
+import { 
+    Container, 
+    Text, 
+    Header, 
+    Body, 
+    Title, 
+    Footer, 
+    FooterTab, 
+    Button, 
+    Content,
+    Form,
+    Item,
+    Input
+} from 'native-base';
 import CustomButton from './src/components/CustomButton';
 import CustomText from './src/components/customText';
+import LoginForm from './src/components/loginForm'
 
 const store = createStore(reducers);
 
@@ -21,25 +36,33 @@ export default class App extends Component {
     var storeState = store.getState();
     return (
       <Provider store={ store }>
-        <View style={styles.container}>
-          <CustomText />
-          <CustomButton title="Increment" type="increment" countValue={storeState}/>
-          <Text style={styles.welcome}> </Text>
-          <CustomButton title="Decrement" type='decrement' countValue={storeState}/>
-          <Text style={styles.welcome}> </Text>
-          <CustomButton title="Reset" type='reset' countValue={storeState}/>
-        </View>
+        <Header>
+          <Body>
+            <Title>Login</Title>
+          </Body>
+        </Header>
+        <Container>
+            <LoginForm/>
+        </Container>
+        {/* <Content>
+          <Form>
+            <Item>
+              <Input placeholder="Username" />
+            </Item>
+            <Item last>
+              <Input placeholder="Password" />
+            </Item>
+          </Form>
+        </Content> */}
+        <Footer>
+          <FooterTab>
+            <CustomButton title={"Login"} type={'login'} data={storeState}/>
+          </FooterTab>
+        </Footer>
       </Provider>
     );
   }
 }
-
-// const mapStateToProps = state => {
-//   console.log("state:");
-//   return;
-// }
-
-// export default connect(mapStateToProps)(App);
 
 const styles = StyleSheet.create({
   container: {

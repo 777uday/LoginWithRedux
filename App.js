@@ -12,7 +12,7 @@ import { Provider, connect } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from "./src/reducers";
 import { 
-    Container, 
+    Container,  
     Text, 
     Header, 
     Body, 
@@ -23,17 +23,20 @@ import {
     Content,
     Form,
     Item,
-    Input
+    Input,
+    Spinner
 } from 'native-base';
 import CustomButton from './src/components/CustomButton';
 import CustomText from './src/components/customText';
-import LoginForm from './src/components/loginForm'
+import LoginForm from './src/components/loginForm';
+import Loader from './src/components/common/loader';
 
 const store = createStore(reducers);
 
 export default class App extends Component {
   render() {
     var storeState = store.getState();
+    console.log("app:storeState:"+JSON.stringify(storeState));
     return (
       <Provider store={ store }>
         <Header>
@@ -42,23 +45,10 @@ export default class App extends Component {
           </Body>
         </Header>
         <Container>
-            <LoginForm/>
+            <LoginForm isLoading={storeState.isLoading}/>
+            <Loader/>
         </Container>
-        {/* <Content>
-          <Form>
-            <Item>
-              <Input placeholder="Username" />
-            </Item>
-            <Item last>
-              <Input placeholder="Password" />
-            </Item>
-          </Form>
-        </Content> */}
-        <Footer>
-          <FooterTab>
             <CustomButton title={"Login"} type={'login'} data={storeState}/>
-          </FooterTab>
-        </Footer>
       </Provider>
     );
   }

@@ -18,14 +18,13 @@ import * as actions from '../actions';
 
 class LoginForm extends Component {
   render() {
-    console.log('props:LoginForm:'+JSON.stringify(this.props));
     return (
         <Form>
             <Item>
-                <Input placeholder="Username" value={this.props.username } onChangeText={(username)=>this.props.loginUsername(username)} />
+                <Input placeholder="Username" value={this.props.username } onChangeText={(username)=>this.props.loginUsername(username, this.props.password)} />
             </Item>
             <Item last>
-                <Input secureTextEntry placeholder="Password" value={this.props.password} onChangeText={(password)=>console.log(password)}/>
+                <Input secureTextEntry placeholder="Password" value={this.props.password} onChangeText={(password)=>this.props.loginPassword(this.props.username, password)}/>
             </Item>
         </Form>
     );
@@ -33,7 +32,6 @@ class LoginForm extends Component {
 }
 
 const mapStateToProps = state =>{
-  console.log('LoginForm:'+JSON.stringify(state));
   return { username:state.loginReducer.username, password:state.loginReducer.password };
 }
 

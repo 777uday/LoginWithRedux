@@ -21,9 +21,11 @@ class CustomButton extends Component {
     } else if(type == 'reset'){
       this.props.resetCount(0);
     } else if(type == 'login'){
-      console.log("CustomButton:login:props:"+JSON.stringify(this.props));
-      this.props.loginUsername(this.props.data.loginReducer.username);
-    }
+      // console.log("CustomButton:login:props:"+JSON.stringify(this.props));
+      var { username, password } = this.props;
+      this.props.loginCall(username, password);
+      this.props.isLoading(true);
+    } 
   }
 
   render() {
@@ -33,4 +35,9 @@ class CustomButton extends Component {
   }
 }
 
-export default connect(null, actions)(CustomButton);
+const mapStateToProps = state =>{
+  // console.log('CustomButton:state:'+JSON.stringify(state));
+  return { username:state.loginReducer.username, password:state.loginReducer.password };
+}
+
+export default connect(mapStateToProps, actions)(CustomButton);

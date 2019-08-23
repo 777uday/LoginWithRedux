@@ -20,10 +20,34 @@ export const resetCount = (count)=>{
     }
 };
 
-export const loginUsername = (username)=>{
-    console.log('actions:'+username);
+export const loginUsername = (username, password)=>{
+    // console.log('actions:'+username+password);
     return {
         type: 'login_username',
-        payload: username
+        payload: {username, password}
+    }
+};
+
+export const loginPassword = (username, password)=>{
+    // console.log('actions:'+username+password);
+    return {
+        type: 'login_password',
+        payload: {username, password}
+    }
+};
+
+export const loginCall = (username, password)=>{
+    // console.log('actions:loginCall:'+username+password);
+    return {
+        type: 'login',
+        payload: { username, password }
+    }
+};
+
+export const isLoading = (shouldLoad)=>{
+    console.log('actions:isLoading:'+shouldLoad);
+    return {
+        type: 'isLoading',
+        payload : shouldLoad
     }
 };

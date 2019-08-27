@@ -30,6 +30,7 @@ import CustomButton from './src/components/CustomButton';
 import CustomText from './src/components/customText';
 import LoginForm from './src/components/loginForm';
 import Loader from './src/components/common/loader';
+import BrandLogo from './src/components/brandLogo';
 
 const store = createStore(reducers);
 
@@ -45,30 +46,12 @@ export default class App extends Component {
           </Body>
         </Header>
         <Container>
+            <BrandLogo/>
             <LoginForm isLoading={storeState.isLoading}/>
             <Loader/>
         </Container>
-            <CustomButton title={"Login"} type={'login'} data={storeState}/>
+        <CustomButton title={"Login"} type={'login'} data={storeState}/>
       </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});

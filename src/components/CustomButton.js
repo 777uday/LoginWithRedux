@@ -7,13 +7,16 @@
  */
 
 import React, {Component} from 'react';
-import { Button } from 'react-native';
+import { Button, Linking } from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import {trial1} from '../saga'
 
 class CustomButton extends Component {
 
   handleButtonPress(type){
+    const genfun = trial1();
+    console.log(`genfun:+${JSON.stringify(genfun)}`);
     if(type == 'increment'){
       this.props.incrementCount(this.props.countValue.count);
     } else if(type == 'decrement'){
@@ -23,9 +26,25 @@ class CustomButton extends Component {
     } else if(type == 'login'){
       // console.log("CustomButton:login:props:"+JSON.stringify(this.props));
       var { username, password } = this.props;
-      this.props.loginCall(username, password);
+      this.props.loginCall(username, password, this.props.navigation, this.props);
       this.props.isLoading(true);
-    } 
+    } else if(type == 'trial1'){
+      var res = genfun.next();
+      console.log('genfun:res'+JSON.stringify(res));
+      var res = genfun.next();
+      console.log('genfun:res'+JSON.stringify(res));
+      var res = genfun.next();
+      console.log('genfun:res'+JSON.stringify(res));
+      var res = genfun.next();
+      console.log('genfun:res'+JSON.stringify(res));
+      var res = genfun.next();
+      console.log('genfun:res'+JSON.stringify(res));
+      var res = genfun.next();
+      console.log('genfun:res'+JSON.stringify(res));
+    } else if(type == 'trial2'){
+      var res = genfun.next();
+      console.log('genfun:res'+JSON.stringify(res));
+    }
   }
 
   render() {

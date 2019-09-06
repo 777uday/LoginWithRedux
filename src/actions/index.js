@@ -36,16 +36,16 @@ export const loginPassword = (username, password)=>{
     }
 };
 
-export const loginCall = (username, password)=>{
-    // console.log('actions:loginCall:'+username+password);
+export const loginCall = (username, password, navigation)=>{
+    // console.log('actions:loginCall:',navigation);
     return {
         type: 'login',
-        payload: { username, password }
+        payload: { username, password, navigation }
     }
 };
 
 export const isLoading = (shouldLoad)=>{
-    console.log('actions:isLoading:'+shouldLoad);
+    // console.log('actions:isLoading:'+shouldLoad);
     return {
         type: 'isLoading',
         payload : shouldLoad

@@ -1,7 +1,9 @@
 
 
 import React, { Component } from 'react'
-
+import { 
+    View
+} from 'react-native';
 import { 
     Container,  
     Text, 
@@ -9,8 +11,9 @@ import {
     Body, 
     Title
 } from 'native-base';
+import CustomButton from '../components/CustomButton'
 
-class Nav extends Component {
+class Home extends Component {
     render() {
         return (
             <View>
@@ -22,9 +25,12 @@ class Nav extends Component {
                 <Container>
                     <Text>Home</Text>
                 </Container>
+                <CustomButton title={"Trial1"} type={'trial1'}/>
+
+                <CustomButton title={"Trial2"} type={'trial2'}/>
             </View>
         )
     }
 }
       
-export default Nav
+export default Home

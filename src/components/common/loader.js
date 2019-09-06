@@ -17,7 +17,7 @@ class Loader extends Component {
       console.log("Loader:Isloading:"+JSON.stringify(this.props));
       var {isLoading, count} = this.props;
     return (
-        <Spinner animating={isLoading} color='blue' />
+        <Spinner animating={false} color='blue' />
     );
   }
 }

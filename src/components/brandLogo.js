@@ -7,13 +7,14 @@
  */
 
 import React, {Component} from 'react';
-import { Image } from 'react-native';
+import { Image, Dimensions } from 'react-native';
 
 const BrandLogo = () =>{
+    var {width, height} = Dimensions.get('window');
     return (
         <Image
-          style={{width: 220, height: 220}}
-          source={{uri: 'https://facebook.github.io/react-native/img/tiny_logo.png'}}
+          style={{width: width*0.8, height: height*0.15}}
+          source={require('../../assets/brandLogo/logo.png')}
         />
     );
 }

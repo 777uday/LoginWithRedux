@@ -4,17 +4,27 @@ import React, { Component } from 'react'
 import Login from './login'
 import Home from './home'
 
-import { StackNavigator } from 'react-navigation'
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-export const Navigator = new StackNavigator({
-  login: { screen: Login },
-  home: { screen: Home },
-})
+export const Navigator = new createStackNavigator({
+  login: { screen: Login,
+    navigationOptions: () => ({
+      header: null,
+    }),
+  },
+  home: { screen: Home,
+    navigationOptions: () => ({
+      header: null,
+    }),
+  },
+},)
+
+const AppContainer = createAppContainer(Navigator);
 
 class Nav extends Component {
   render() {
     return (
-      <Navigator />
+      <AppContainer />
     )
   }
 }
